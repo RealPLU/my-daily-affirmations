@@ -1,0 +1,79 @@
+/*
+ * Styles for the My Daily Affirmations app.
+ *
+ * The layout is intentionally simple: a big circular button
+ * centred both horizontally and vertically, a counter at the top,
+ * and a reset button at the bottom. Colours and sizing mirror
+ * the original Easy Button project to provide a familiar look.
+ */
+
+/* Fill the entire viewport with a dark background and centre
+   children using flexbox. Remove default margins so the page
+   truly extends edge‑to‑edge. */
+body {
+  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+/* The main affirmation button. It’s styled as a red circle
+   with white text. A subtle box shadow gives it depth. When
+   clicked the colour changes briefly and the size shrinks a
+   little to provide feedback. */
+#affirmationBtn {
+  background-color: red;
+  color: white;
+  font-size: 2.5rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  cursor: pointer;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
+  transition: color 0.4s ease, transform 0.1s ease;
+}
+
+/* Counter display at the top of the page. It stays
+   fixed in place regardless of scroll and uses a simple
+   sans-serif font for clarity. */
+#counterDisplay {
+  position: absolute;
+  top: 30px;
+  color: white;
+  font-size: 1.5rem;
+  font-family: Arial, sans-serif;
+}
+
+/* Style for the reset button. It sits at the bottom
+   of the page and uses a dark grey background to blend
+   subtly into the dark theme. */
+#resetBtn {
+  margin-top: 20px;
+  font-size: 1rem;
+  padding: 10px 20px;
+  border: none;
+  background-color: #333;
+  color: white;
+  border-radius: 8px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 30px;
+}
+
+/* Slightly lighten the reset button on hover to
+   indicate interactivity. */
+#resetBtn:hover {
+  background-color: #555;
+}
+
+/* Add a yellow colour flash and shrink effect
+   when the affirmation button is clicked. The class
+   is toggled by JavaScript for a short duration. */
+#affirmationBtn.clicked {
+  color: yellow;
+  transform: scale(0.94);
+}
