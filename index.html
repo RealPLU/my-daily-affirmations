@@ -1,0 +1,41 @@
+<!--
+  My Daily Affirmations
+
+  This simple web application is a variation of the classic "Easy Button".
+  When the main button is pressed it uses the browser's built‑in
+  text‑to‑speech engine to recite a series of four affirmations. A
+  persistent counter shows how many times the button has been pressed.
+
+  The markup structure mirrors the original Easy Button project, but
+  elements have been renamed to reflect the new purpose. All styling
+  lives in an external CSS file and the interactive behaviour is
+  implemented in script.js.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>My Daily Affirmations</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="counterDisplay">Pressed 0 times</div>
+  <!--
+    The main button that triggers affirmation playback. The styling
+    targets this element using its id.
+  -->
+  <button id="affirmationBtn">Affirm</button>
+  <!--
+    A small button for clearing the counter. Resets the press count
+    and updates the display.
+  -->
+  <button id="resetBtn">Reset</button>
+
+  <!--
+    All JavaScript lives in this external file. Keeping it at the end
+    of the document ensures that the DOM is parsed before the script
+    runs.
+  -->
+  <script src="script.js"></script>
+</body>
+</html>
