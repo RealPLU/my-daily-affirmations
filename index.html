@@ -32,6 +32,14 @@
   <button id="resetBtn">Reset</button>
 
   <!--
+    The audio element that contains your pre‑recorded affirmations. When
+    the button is pressed the JavaScript will rewind this audio and
+    play it from the beginning. Replace `affirmations.mp3` with the
+    filename you upload to the repository.
+  -->
+  <audio id="affirmationAudio" src="affirmations.mp3"></audio>
+
+  <!--
     All JavaScript lives in this external file. Keeping it at the end
     of the document ensures that the DOM is parsed before the script
     runs.
