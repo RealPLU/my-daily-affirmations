@@ -17,19 +17,21 @@ const counterDisplay = document.getElementById('counterDisplay');
 let count = parseInt(localStorage.getItem('affirmationCount')) || 0;
 updateCounter();
 
-// Define the affirmations to speak. These come from the user and can
-// be edited as needed. They will be queued and spoken in order.
-const affirmations = [
-  "I was created by God, and he does love what he created.",
-  "I am here to be truly helpful to my brothers.",
-  "The only problem you have is the belief that you can have problems. All thought is creative.",
-  "Today is going to be a great day. I can and I will."
-];
+// Grab a handle to the audio element containing your pre‑recorded
+// affirmations. This element is defined in index.html. When the
+// main button is clicked the audio will rewind to the beginning and
+// play. You can swap out the underlying MP3 file without changing
+// this script.
+const affirmationAudio = document.getElementById('affirmationAudio');
 
 // Handle clicks on the main button.
 affirmationBtn.addEventListener('click', () => {
-  // Speak the affirmations using SpeechSynthesis
-  speakAffirmations();
+  // Play the prerecorded affirmations. Reset playback in case the
+  // audio was already partially through on a previous click.
+  if (affirmationAudio) {
+    affirmationAudio.currentTime = 0;
+    affirmationAudio.play();
+  }
   // Increment and persist the press count
   count++;
   localStorage.setItem('affirmationCount', count);
@@ -54,18 +56,6 @@ function updateCounter() {
   counterDisplay.textContent = `Pressed ${count} ${count === 1 ? 'time' : 'times'}`;
 }
 
-// Function to speak all affirmations in sequence
-function speakAffirmations() {
-  // Cancel any previous speech to avoid overlapping
-  if (window.speechSynthesis.speaking || window.speechSynthesis.pending) {
-    window.speechSynthesis.cancel();
-  }
-  affirmations.forEach((text) => {
-    const utterance = new SpeechSynthesisUtterance(text);
-    // Optionally adjust voice parameters here (rate, pitch, volume)
-    utterance.rate = 1.0;
-    utterance.pitch = 1.0;
-    utterance.volume = 1.0;
-    window.speechSynthesis.speak(utterance);
-  });
-}
+// In this version of the application we no longer use the browser's
+// speech synthesis API because a pre‑recorded MP3 is provided by
+// the user. The speakAffirmations function has been removed.
